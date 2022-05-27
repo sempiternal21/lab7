@@ -1,0 +1,30 @@
+﻿@model Instrument;
+<!DOCTYPE html>
+<html>
+</html>
+<div class="metrica-block" style="background-color: deepskyblue">
+    <h2>Статистика</h2>
+    <div style="font-weight:600">Общее количество объектов</div>
+    <div>Количество инструментов: @ViewData["CountInstr"]</div>
+    <div>Количество музыкантов: @ViewData["CountMusicans"]</div>
+    <div>Общее количество объектов: @ViewData["Count"]</div>
+    <br />
+    <div style="font-weight:600">Количество музыкантов в каждой группе</div>
+    @foreach (var item in ViewData["GrCountry"] as List<IGrouping<string, Musician>>)
+    {
+        <div>@item.Key: @item.Count()</div>
+    }
+    <br />
+    <div style="font-weight:600">Средний возраст музыкантов в зависимости от группы</div>
+    @foreach (var item in ViewData["GrCountry"] as List<IGrouping<string, Musician>>)
+    {
+        <div>@item.Key: @item.Average(x => x.Age)</div>
+    }
+    <br />
+    <div style="font-weight:600">Количество музыкантов для каждого инструмента (связанная сущность)</div>
+    @foreach (var item in ViewData["GrInstr"] as List<IGrouping<string, Musician>>)
+    {
+        <div>@(item.Key): @item.Count()</div>
+    }
+
+</div>

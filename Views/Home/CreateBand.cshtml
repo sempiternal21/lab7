@@ -1,0 +1,33 @@
+﻿@model lab7.Models.Band;
+<!DOCTYPE html>
+<html>
+
+<h4>Band</h4>
+<div class="edit-block">
+    @using (Html.BeginForm("CreateBand", "Home"))
+    {
+        <div class="dataBox">
+            <label>ID</label><br />
+            @Html.TextBoxFor(m => m.Id, new { @type = "number", @class = "text-box" })
+        </div>
+        <div class="dataBox">
+            <label>Название</label><br />
+            @Html.TextBoxFor(m => m.Name, new { @class = "text-box" })
+        </div>
+        <div class="dataBox">
+            <label>Год основания</label><br />
+            @Html.TextBoxFor(m => m.Year, new { @type = "number", @class = "text-box" })
+        </div>
+        <div class="dataBox">
+            <label>Страна</label><br />
+            @Html.TextBoxFor(m => m.Country, new { @class = "text-box" })
+        </div>
+        <div class="dataBox">
+            <input type="submit" value="Save" />
+        </div>
+    }
+</div>
+<div>
+    <a asp-action="BandsPage">Back to Bands List</a>
+</div>
+</html>
